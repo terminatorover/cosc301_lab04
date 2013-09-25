@@ -1,8 +1,8 @@
 COSC 301: Operating Systems
 ===========================
 
-Lab 4: The process API and more fun with pointers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Lab 4: The process API
+~~~~~~~~~~~~~~~~~~~~~~
 
 You can write/paste your answers (text and/or code) into the ``lab04.txt`` file in the lab04 repo and just submit that file to Moodle.
 
@@ -43,8 +43,10 @@ effort to make the operating system crash (or run very slowly).  Careful with th
 
 3.  The following code (also in the repo as ``fork03.c``)
 uses the ``execv`` system call to start and run the ``ps`` program. 
-Modify the program so that it first forks a child process, which then
-does the ``execv``.  The parent process should wait for the child
+
+Your task is to modify the program so that it first forks a child 
+process, which then does the ``execv``.  
+The parent process should wait for the child
 process to finish running (using the ``waitpid`` system call), print a
 message like ``"Child process finished"``, then exit.
 
@@ -74,32 +76,3 @@ You should be able to call it similar to the following: ``waitpid(pid, &childrv,
         return 0;
     }
 
-
-4.  The following code is broken (``badptr.c`` in the repo).  Explain what is wrong and how to fix the problem::
-
-     #include <stdio.h>
-     #include <string.h>
-     #include <ctype.h>
- 
-     char *remove_whitespace(char *s) {
-         char buffer[strlen(s) + 1];
-         int i = 0, j = 0;
-         for ( ; i < strlen(s); i += 1) {
-             if (!isspace(s[i])) {
-                 buffer[j] = s[i];
-                 j += 1;
-             }
-         }
-         buffer[j] = '\0';
-         printf("%s\n", buffer);
-         return buffer;
-     }
-     
-     int main(int argc, char **argv) {
-         char *s = strdup("  the \tinternet\t\nis a series of tubes  ");
-         char *newstr = remove_whitespace(s);
-         printf("%s\n", newstr);
-         return 0;
-     }
-
-..
