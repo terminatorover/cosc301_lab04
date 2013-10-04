@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//STUPID CHNAGE MADE
+//STUPID CHANGE MADE
+//STUIPD CHANGE 2 MADEEEEEEEEEEEEEEEEEEEEEE
 int main(int argc, char **argv) {
 
     char *s = "I am a process!";
